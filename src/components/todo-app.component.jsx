@@ -1,6 +1,8 @@
 import React from 'react';
 import useTDState from '../custom-hooks/useTDState';
 
+import { TodoProvider } from '../contexts/todos.context';
+
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,19 +14,15 @@ import TodoForm from './todo-form.component';
 
 
 function TodoApp(props) {
-  const initialTodos = [{id: 1, task: 'ATTAIN BIG WATT', completed: false}];
+  // const initialTodos = [{id: 1, task: 'ATTAIN BIG WATT', completed: false}];
 
-  const { 
-    tasks,
-    addTask,
-    removeTask,
-    toggleComplete,
-    editTask,
-   } = useTDState(initialTodos)
-
-  // useEffect(() => {
-  //   window.localStorage.setItem('tasks', JSON.stringify(tasks))
-  // }, [tasks]);
+  // const { 
+  //   tasks,
+  //   addTask,
+  //   removeTask,
+  //   toggleComplete,
+  //   editTask,
+  //  } = useTDState(initialTodos)
 
   return (
     <Paper className='TodoApp' elevation={0}>
@@ -35,8 +33,15 @@ function TodoApp(props) {
       </AppBar>
       <Grid container justify='center' style={{ marginTop: '2rem' }}>
         <Grid item xs={12} md={8} lg={5}>
-          <TodoForm addTask={addTask} />
-          <TodoList edit={editTask} todos={tasks} toggleComplete={toggleComplete} removeTask={removeTask}/>
+          <TodoProvider>
+            <TodoForm />
+            <TodoList
+              // edit={editTask}
+              // todos={tasks}
+              // toggleComplete={toggleComplete}
+              // removeTask={removeTask}
+            />
+          </TodoProvider>
         </Grid>
       </Grid>
     </Paper>

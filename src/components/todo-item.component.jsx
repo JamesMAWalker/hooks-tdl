@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { TodosContext } from '../contexts/todos.context';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -11,8 +13,9 @@ import EditIcon from '@material-ui/icons/Edit';
 import useToggle from '../custom-hooks/useToggle';
 import TodoEditor from './todo-editor.component';
 
-function TodoItem({ id, task, complete, removeTask, toggleComplete, edit }) {
+function TodoItem({ id, task, complete }) {
   const [isEditing, toggle] = useToggle();
+  const { removeTask, toggleComplete } = useContext(TodosContext);
 
   const handleDelete = () => {
     removeTask(id);
@@ -25,13 +28,13 @@ function TodoItem({ id, task, complete, removeTask, toggleComplete, edit }) {
   return (
     <ListItem style={{ height: '75px' }} >
       {isEditing ? (
-        <TodoEditor id={id} edit={edit} task={task} toggleForm={toggle} />
+        <TodoEditor id={id} task={task} toggleForm={toggle} />
       ) : (
         <>
           <Checkbox tabinddex={-1} onClick={handleCheck} checked={complete} />
           <ListItemText>
             <li style={{ textDecoration: complete ? 'line-through' : 'none' }}>
-              do me bb: {task}
+              {task}
             </li>
           </ListItemText>
           <ListItemSecondaryAction>

@@ -15,14 +15,14 @@ import TodoEditor from './todo-editor.component';
 
 function TodoItem({ id, task, complete }) {
   const [isEditing, toggle] = useToggle();
-  const { removeTask, toggleComplete } = useContext(TodosContext);
+  const { dispatch } = useContext(TodosContext);
 
   const handleDelete = () => {
-    removeTask(id);
+    dispatch({ type: 'REMOVE', id: id })
   }
 
   const handleCheck = () => {
-    toggleComplete(id)
+    dispatch({ type: 'TOGGLECOMPLETE', id: id })
   }
   
   return (
@@ -34,7 +34,7 @@ function TodoItem({ id, task, complete }) {
           <Checkbox tabinddex={-1} onClick={handleCheck} checked={complete} />
           <ListItemText>
             <li style={{ textDecoration: complete ? 'line-through' : 'none' }}>
-              {task}
+              {task ? task : 'Add a task...'}
             </li>
           </ListItemText>
           <ListItemSecondaryAction>

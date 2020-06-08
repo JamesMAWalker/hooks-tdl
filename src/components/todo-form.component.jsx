@@ -8,14 +8,15 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 
 function TodoForm() {
-  const { addTask } = useContext(TodosContext);
+  const { dispatch } = useContext(TodosContext);
   const [val, handleChange, reset] = useInputState('');
 
   return (
     <Paper className='todo-form'>
       <form onSubmit={e => {
         e.preventDefault();
-        addTask(val);
+        dispatch({ type: 'ADD', task: val })
+        // addTask(val);
         reset();
       }} >
         <TextField value={val} onChange={handleChange} />

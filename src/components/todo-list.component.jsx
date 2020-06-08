@@ -16,7 +16,9 @@ function TodoList() {
     return (
       <Paper>
         <List>
-          {tasks.map((td, i) => (
+          {
+            tasks ?
+            tasks.map((td, i) => (
             <>
               <TodoItem
                 {...td}
@@ -24,7 +26,10 @@ function TodoList() {
               />
               {i < tasks.length - 1 && <Divider />}
             </>
-          ))}
+          ))
+            :
+            <p>'Add a task...</p>
+          }
         </List>
       </Paper>
     );

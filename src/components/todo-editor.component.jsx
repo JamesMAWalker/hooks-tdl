@@ -8,12 +8,13 @@ import useInputState from '../custom-hooks/useInputState';
 
 function TodoEditor({ task, id, toggleForm }) {
   const [value, handleChange, resetInput ] = useInputState(task);
-  const { editTask } = useContext(TodosContext);
+  const { dispatch } = useContext(TodosContext);
 
   return (
     <form onSubmit={(e) => {
         e.preventDefault();
-        editTask(id, value);
+        dispatch({ type: 'EDIT', id: id, newTask: value })
+        // editTask(id, value);
         resetInput();
         toggleForm();
       }}

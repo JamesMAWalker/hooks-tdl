@@ -35,12 +35,7 @@ function TodoApp(props) {
         <Grid item xs={12} md={8} lg={5}>
           <TodoProvider>
             <TodoForm />
-            <TodoList
-              // edit={editTask}
-              // todos={tasks}
-              // toggleComplete={toggleComplete}
-              // removeTask={removeTask}
-            />
+            <TodoList />
           </TodoProvider>
         </Grid>
       </Grid>

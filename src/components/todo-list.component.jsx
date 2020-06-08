@@ -10,30 +10,31 @@ import TodoItem from './todo-item.component';
 
 
 function TodoList() {
-  const { tasks } = useContext(TodosContext)
+  const tasks = useContext(TodosContext)
 
   if (tasks.length)
     return (
       <Paper>
         <List>
           {
-            tasks ?
             tasks.map((td, i) => (
-            <>
-              <TodoItem
-                {...td}
-                key={td.id}
-              />
-              {i < tasks.length - 1 && <Divider />}
-            </>
-          ))
-            :
-            <p>'Add a task...</p>
+              <React.Fragment>
+                <TodoItem
+                  {...td}
+                  key={td.id}
+                />
+                {i < tasks.length - 1 && <Divider />}
+              </React.Fragment>
+            ))
           }
         </List>
       </Paper>
     );
-    return
+    return (
+      <Paper>
+        <p style={{ height: '5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', fontStyle: 'italic'}}>No current tasks...</p>
+      </Paper>
+    )
 }
 
 export default TodoList;

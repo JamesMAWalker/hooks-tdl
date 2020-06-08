@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 
 import { DispatchContext } from '../contexts/todos.context';
 
@@ -24,8 +24,6 @@ function TodoItem({ id, task, complete }) {
   const handleCheck = () => {
     dispatch({ type: 'TOGGLECOMPLETE', id: id })
   }
-  
-  // console.log('todo form render!');
   
   return (
     <ListItem style={{ height: '75px' }} >
@@ -53,4 +51,4 @@ function TodoItem({ id, task, complete }) {
   );
 }
 
-export default TodoItem;
+export default memo(TodoItem);

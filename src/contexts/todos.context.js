@@ -2,8 +2,6 @@ import React, { createContext, useReducer } from 'react';
 
 import taskReducer from '../reducers/todos.reducer';
 
-import useTDState from '../custom-hooks/useTDState';
-
 export const TodosContext = createContext();
 export const DispatchContext = createContext();
 

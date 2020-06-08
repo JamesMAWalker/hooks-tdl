@@ -11,7 +11,6 @@ function TodoForm() {
   const dispatch = useContext(DispatchContext);
   const [val, handleChange, reset] = useInputState('');
 
-  console.log('todo editor render!');
   return (
     <Paper className='todo-form'>
       <form onSubmit={e => {

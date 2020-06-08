@@ -14,7 +14,6 @@ function TodoEditor({ task, id, toggleForm }) {
     <form onSubmit={(e) => {
         e.preventDefault();
         dispatch({ type: 'EDIT', id: id, newTask: value })
-        // editTask(id, value);
         resetInput();
         toggleForm();
       }}

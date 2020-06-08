@@ -14,15 +14,6 @@ import TodoForm from './todo-form.component';
 
 
 function TodoApp(props) {
-  // const initialTodos = [{id: 1, task: 'ATTAIN BIG WATT', completed: false}];
-
-  // const { 
-  //   tasks,
-  //   addTask,
-  //   removeTask,
-  //   toggleComplete,
-  //   editTask,
-  //  } = useTDState(initialTodos)
 
   return (
     <Paper className='TodoApp' elevation={0}>
